@@ -47,9 +47,7 @@ with st.sidebar:
     st.markdown("##  RSM 하이브리드 연구")
     st.markdown("동남전자 × 동아대\n산업경영공학과")
     st.divider()
-    st.markdown("**참고 논문**\nDemand Forecasting of Propylene Oxide (PO)
-Price Using Statistical Methods and Support
-Vector Machine")
+    st.markdown("**참고 논문**\nDemand Forecasting of Propylene Oxide (PO)Price Using Statistical Methods and SupportVector Machine")
     st.divider()
     page = st.radio("섹션", [
         "① 연구 개요",
