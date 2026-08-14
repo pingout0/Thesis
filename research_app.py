@@ -10,7 +10,7 @@ import numpy as np
 import json
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="RSM 하이브리드 예측 연구", page_icon="🔬",
+st.set_page_config(page_title="RSM 하이브리드 예측 연구", page_icon=" ",
                    layout="wide", initial_sidebar_state="expanded")
 
 # ── 스타일
@@ -44,7 +44,7 @@ COPPER="#C87941"; NAVY="#13233A"; STEEL="#5B7A99"; GREEN="#2E7D5B"; RED="#B0413E
 # 사이드바
 # ══════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## 🔬 RSM 하이브리드 연구")
+    st.markdown("##  RSM 하이브리드 연구")
     st.markdown("동남전자 × 동아대\n산업경영공학과")
     st.divider()
     st.markdown("**논문 기반**\nDemand Forecasting of PO price using RSM and SVM")
