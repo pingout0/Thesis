@@ -133,7 +133,7 @@ elif page.startswith("②"):
     st.dataframe(dfc.style.highlight_min(subset=["MAPE(%)"],color="#D6EFE2")
                  .highlight_max(subset=["방향성(%)"],color="#FBEEE2"),
                  use_container_width=True, hide_index=True)
-    st.markdown(f'<div class="keybox">🏆 <b>{band} 최적: {best}</b> — MAPE {dfc.iloc[0]["MAPE(%)"]:.2f}%, 방향성 {dfc.iloc[0]["방향성(%)"]:.0f}%</div>',unsafe_allow_html=True)
+    st.markdown(f'<div class="keybox"> <b>{band} 최적: {best}</b> — MAPE {dfc.iloc[0]["MAPE(%)"]:.2f}%, 방향성 {dfc.iloc[0]["방향성(%)"]:.0f}%</div>',unsafe_allow_html=True)
 
     # 막대그래프 2개
     c1,c2=st.columns(2)
@@ -151,7 +151,7 @@ elif page.startswith("②"):
 
     st.markdown("""
 <div class="finding">
-📌 <b>해석</b> — MAPE는 '가격을 얼마나 정확히', 방향성(D-stat)은 '오를지 내릴지를 얼마나 맞추는지'를 봅니다.
+ <b>해석</b> — MAPE는 '가격을 얼마나 정확히', 방향성(D-stat)은 '오를지 내릴지를 얼마나 맞추는지'를 봅니다.
 발주 결정에서는 방향성이 특히 중요합니다. 어떤 모델은 MAPE는 낮아도 방향성이 랜덤 이하일 수 있어 함께 봐야 합니다.
 </div>
 """, unsafe_allow_html=True)
@@ -179,7 +179,7 @@ elif page.startswith("③"):
     st.plotly_chart(fig,use_container_width=True)
 
     c1,c2,c3=st.columns(3)
-    c1.metric("β(상수)","CV 0.08","안정 ✅")
+    c1.metric("β(상수)","CV 0.08","안정 👍")
     c2.metric("β(환율)","CV 11.60","불안정 ⚠️")
     c3.metric("β(환율²)","CV 40.26","극도 불안정 🔴")
 
@@ -199,7 +199,7 @@ elif page.startswith("③"):
 
     st.markdown("""
 <div class="warn">
-💡 <b>연구적 의미</b> — 상수항만 안정적이고 나머지 계수(특히 고차항·환율)는 부호까지 반전하며 요동칩니다.
+<b>연구적 의미</b> — 상수항만 안정적이고 나머지 계수(특히 고차항·환율)는 부호까지 반전하며 요동칩니다.
 이는 β 예측 접근의 <b>실패가 아니라, 방법의 적용 조건(계수 안정성)을 규명한 기여</b>입니다.
 "이 방법은 언제 쓸 수 있고 언제 못 쓰는가"를 밝힌 것이 연구의 가치입니다.
 </div>
@@ -225,7 +225,7 @@ elif page.startswith("④"):
     st.plotly_chart(fig,use_container_width=True)
 
     v3=dd["3차"]["검증"]; t3=dd["3차"]["학습"]
-    st.markdown(f'<div class="finding">📌 <b>3차 과적합</b> — 학습 {t3:.1f}%로 가장 좋지만 검증 {v3:.1f}%로 폭발. <b>2차가 복잡도-일반화 균형점</b>입니다.</div>',unsafe_allow_html=True)
+    st.markdown(f'<div class="finding"> <b>3차 과적합</b> — 학습 {t3:.1f}%로 가장 좋지만 검증 {v3:.1f}%로 폭발. <b>2차가 복잡도-일반화 균형점</b>입니다.</div>',unsafe_allow_html=True)
 
     st.divider()
     st.markdown("### window 크기 민감도 (β 예측)")
@@ -241,7 +241,7 @@ elif page.startswith("④"):
     fig.update_layout(height=340,margin=dict(t=20,b=20),
         xaxis_title="window 크기 (개월)",yaxis_title="MAPE (%)",hovermode="x unified")
     st.plotly_chart(fig,use_container_width=True)
-    st.markdown('<div class="finding">📌 <b>고정 최적값 없음</b> — 단기는 window 18, 중기는 30이 유리. 예측 기간에 맞춘 튜닝이 필요합니다.</div>',unsafe_allow_html=True)
+    st.markdown('<div class="finding"> <b>고정 최적값 없음</b> — 단기는 window 18, 중기는 30이 유리. 예측 기간에 맞춘 튜닝이 필요합니다.</div>',unsafe_allow_html=True)
 
 # ══════════════════════════════════════════
 # ⑤ 방법 권장 시스템
@@ -273,7 +273,7 @@ elif page.startswith("⑤"):
 
     for name,m in ranked:
         is_rec = name==rec
-        icon = "✅ 권장" if is_rec else ""
+        icon = " 권장" if is_rec else ""
         bar_color = GREEN if is_rec else STEEL
         st.markdown(f"""
 <div style="display:flex;align-items:center;gap:12px;margin:6px 0;
@@ -332,7 +332,7 @@ elif page.startswith("⑥"):
 </div>
 """, unsafe_allow_html=True)
 
-    st.markdown('<div class="finding">📌 <b>구간마다 최적 방법이 다릅니다</b> — 안정기는 RSM 단독, 급등기는 2단계, 조정기는 직접 예측(SVR). 단일 방법이 모든 국면을 지배하지 않습니다.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="finding"> <b>구간마다 최적 방법이 다릅니다</b> — 안정기는 RSM 단독, 급등기는 2단계, 조정기는 직접 예측(SVR). 단일 방법이 모든 국면을 지배하지 않습니다.</div>', unsafe_allow_html=True)
 
     # 상세 비교표 (구간 선택)
     st.markdown("### 구간별 상세 성능")
@@ -368,7 +368,7 @@ elif page.startswith("⑥"):
 
     st.markdown("""
 <div class="warn">
-💡 <b>연구 발견</b> — "최적 예측 방법은 <b>예측 기간 × 시장 국면</b>의 함수다."<br>
+ <b>연구 발견</b> — "최적 예측 방법은 <b>예측 기간 × 시장 국면</b>의 함수다."<br>
 급등기엔 중간변수(구리)를 경유하는 2단계 예측이 안정적이고, 조정기엔 ML의 유연성이,
 안정기엔 단순 RSM이 유리합니다. 이는 참고 논문의 "결합모델이 항상 최고"와 달리,
 <b>데이터 국면에 따라 방법을 달리해야 함</b>을 보여줍니다.
@@ -434,7 +434,7 @@ elif page.startswith("⑦"):
 
     st.markdown("""
 <div class="warn">
-💡 <b>연구 발견</b><br>
+ <b>연구 발견</b><br>
 • <b>분포기반 증강</b>이 가장 효과적 (XGBoost 8.23%→5.82%). 변수 간 공분산을
   유지하며 샘플을 생성해, 변수들이 함께 움직이는 원자재 데이터에 적합합니다.<br>
 • 지터링·부트스트랩은 모델에 따라 오히려 악화 → <b>증강 기법도 데이터·모델에 맞게 선택</b>해야 합니다.<br>
